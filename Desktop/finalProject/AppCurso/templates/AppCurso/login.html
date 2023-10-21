@@ -1,0 +1,16 @@
+{% extends "AppCurso/base.html" %}
+
+{% block content %}
+  <h2>Iniciar sesión</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Iniciar sesión</button>
+  </form>
+  
+
+  <p>¿Quieres cambiar tu contraseña? <a href="{% url 'cambiar_contrasena' %}">Cambiar contraseña</a></p>
+  <p>¿Deseas cerrar sesión? <a href="{% url 'logout' %}">Cerrar sesión</a></p>
+  <p>¿Necesitas editar tu perfil? <a href="{% url 'editar_perfil' %}">Editar perfil</a></p>
+</div>
+{% endblock %}

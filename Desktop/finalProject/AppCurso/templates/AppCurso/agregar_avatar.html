@@ -1,0 +1,19 @@
+{% extends "AppCurso/base.html" %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data" action="{% url 'inicio' %}"></form>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h3 class="text-center">Carga tu Avatar</h3>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ form.as_p }}
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Subir Avatar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "AppCurso/base.html" %}
+
+{% block content %}
+    <div class="container px-5">
+        <h1 class="display-4">¿Seguro que deseas borrar este comentario?</h1>
+        <p>Comentario de: {{ comentario.autor }}</p>
+        <p>{{ comentario.mensaje }}</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Sí, borrar este comentario</button>
+        </form>
+    </div>
+{% endblock %}

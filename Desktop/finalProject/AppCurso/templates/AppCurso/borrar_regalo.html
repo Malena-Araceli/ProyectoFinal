@@ -1,0 +1,33 @@
+{% extends "AppCurso/base.html" %}
+{% load static %}
+
+{% block section1 %}
+    <section>
+        <div class="container px-5">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'appCurso/assets/img/02.jpg' %}" alt="..." /></div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5">
+                        <h2 class="display-4">Borrar Regalo</h2>
+                        <p>¿Quieres eliminarlo de la lista?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+    <section id="borrar-regalo">
+        <div class="container px-5">
+            <h1 class="display-4">Borrar Regalo</h1>
+            <p>¿Estás seguro que deseas eliminar el regalo "{{ regalo.nombre }}" de la lista de regalos?</p>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit">Confirmar</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "AppCurso/base.html" %}
+
+{% block content %}
+    <section id="lista-parejas">
+        <div class="container px-5">
+            <h1 class="display-4">Lista de Parejas</h1>
+            {% if parejas %}
+                <ul>
+                    {% for pareja in parejas %}
+                        <li>
+                            <h2>{{ pareja.nombre_novio }} y {{ pareja.nombre_novia }}</h2>
+                            <p>Fecha de casamiento: {{ pareja.fecha_casamiento|date:"d-m-Y" }}</p>
+                            {% if pareja.foto %}
+                            <img src="{{ pareja.foto.url }}" alt="{{ pareja.nombre_novio }} y {{ pareja.nombre_novia }}" />
+
+                            {% endif %}
+                            <a href="{% url 'editar_pareja' pareja.id %}">Editar</a> |
+                            <a href="{% url 'borrar_pareja' pareja.id %}">Borrar</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No hay parejas en la lista.</p>
+                <a href="{% url 'agregar_pareja' %}" class="btn btn-primary">Agregar Pareja</a>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

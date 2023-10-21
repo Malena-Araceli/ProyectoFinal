@@ -1,0 +1,32 @@
+{% extends "AppCurso/base.html" %}
+{% load static %}
+
+{% block content %}
+    <section id="lista-regalos">
+        <div class="container px-5">
+            <h1 class="display-4">Lista de Regalos</h1>
+            <ul>
+                {% for regalo in regalos %}
+                    <li>
+                        <h2>{{ regalo.nombre }}</h2>
+                        <p>{{ regalo.descripcion }}</p>
+                        {% if regalo.entregado %}
+                            <p>Estado: Entregado</p>
+                        {% else %}
+                            <p>Estado: Pendiente</p>
+                        {% endif %}
+                        <a href="{% url 'editar_regalo' regalo.id %}">Editar</a>
+                        <a href="{% url 'borrar_regalo' regalo.id %}">Borrar</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <h2>Agregar Regalo</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Agregar</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

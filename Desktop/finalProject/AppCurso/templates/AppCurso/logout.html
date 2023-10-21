@@ -1,0 +1,11 @@
+{% extends "AppCurso/base.html" %}
+
+{% block content %}
+  <h2>Cierre de Sesión</h2>
+  <p>¿Estás seguro de que deseas cerrar la sesión?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Cerrar Sesión</button>
+  </form>
+</div>
+{% endblock %}

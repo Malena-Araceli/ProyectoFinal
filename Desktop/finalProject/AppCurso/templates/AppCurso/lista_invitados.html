@@ -1,0 +1,24 @@
+
+
+
+{% extends "AppCurso/base.html" %}
+
+{% block content %}
+    <div class="container px-5">
+        <h1 class="display-4">Lista de Invitados</h1>
+        {% if invitados %}
+            <ul>
+                {% for invitado in invitados %}
+                    <li>
+                        {{ invitado.nombre }} {{ invitado.apellido }} - {{ invitado.email }}
+                        <a href="{% url 'editar_invitado' invitado.id %}">Editar</a> |
+                        <a href="{% url 'borrar_invitado' invitado.id %}">Borrar</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No hay invitados en la lista.</p>
+            <a href="{% url 'agregar_invitado' %}" class="btn btn-primary">Agregar Invitado</a>
+        {% endif %}
+    </div>
+{% endblock %}

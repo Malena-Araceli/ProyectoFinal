@@ -1,0 +1,77 @@
+Caso de Prueba: Problema de Carga de scripts.js
+
+Descripción:
+En mi inicio.html y base.html me figuraba el error "GET /static/js/scripts.js HTTP/1.1" 404 1798"
+
+Pasos:
+
+1. Reproducción del Problema:
+   - Inicialmente, el proyecto se configuró para cargar el archivo JavaScript `scripts.js` con la siguiente línea en la plantilla de inicio (`base.html`):
+     ```        
+     <script src="js/scripts.js"></script>
+     ```
+
+2. Observación del Problema:
+Cada vez que ingreso al inicio u otras urls me figura en la consola el mismo error de `scripts.js`.
+
+   - Not Found: /js/scripts.js
+[20/Oct/2023 10:19:33] "GET /js/scripts.js HTTP/1.1" 404 7028
+[20/Oct/2023 10:19:33] "GET /static/favicon.ico HTTP/1.1" 404 1792
+
+3. Solución Aplicada:
+   - Busque en los archivos de base.html e inicio.html donde se encontraba el scripts.js asi como tambien revise la ruta del archivo.
+modifique "<script src="js/scripts.js"></script>" por 
+     <script src="{% static 'appCurso/js/scripts.js' %}"></script>
+
+4. Resultados:
+   -  "GET /static/appCurso/js/scripts.js HTTP/1.1" 200 333
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+
+
+Caso de Prueba: Problema de Carga de context_processory.py
+Descripción: Se creo un archivo "context_processory.py" para que el avatar figure en todas las urls al momento de navegar.
+
+Pasos:
+
+1. Reproducción del Problema:
+   - Inicialmente, el proyecto se configuró para cargar el siguiente codigo en context_processory      
+def custom_user(request):
+    context = auth(request)
+    user = context["user"]
+    if user.is_authenticated:
+        avatar = Avatar.objects.filter(user=request.user.id)
+        if len(avatar) >0:
+            context['user_avatar'] = avatar[0]
+        else:
+            context['user_avatar'] = ""
+        return context
+
+     ```
+2. Observación del Problema:
+Cuando guardaba el archivo con el codigo proporcionado la url dejo de  funcionar enviando el siguiente error "TypeError at /admin/login/
+'NoneType' object is not iterable
+Request Method:	GET
+Django Version:	4.2.6
+Exception Type:	TypeError
+Exception Value:	
+'NoneType' object is not iterable"
+
+3. Solución Aplicada:
+   -Mire que el setting este bien configurado. Se llego a la conclucion de cambiar el codigo por un "none"     def custom_user(request):
+    context = auth(request)
+    user = context["user"]
+    if user.is_authenticated:
+        avatar = Avatar.objects.filter(user=user.id).first()
+        context['user_avatar'] = avatar
+    else:
+        context['user_avatar'] = None  
+    return context
+
+4. Resultados:
+El codigo funciona y ya puedo navegar por la web
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+CASOS PRUEBAS EN HOJA DE CALCULOS
+
+https://docs.google.com/spreadsheets/d/1u1D6OBS1Wrd-4xAIYNA8T2FR16vXDVpA8VKXx6R6Psc/edit?usp=sharing

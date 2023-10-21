@@ -1,0 +1,25 @@
+{% extends "AppCurso/base.html" %}
+
+{% block content %}
+  <h2>Edita tu perfil</h2>
+  <form method="post" class="profile-form">
+    {% csrf_token %}
+    <div class="form-group">
+      {{ form.username.label_tag }} {{ form.username }}
+    </div>
+    <div class="form-group">
+      {{ form.email.label_tag }} {{ form.email }}
+    </div>
+    <div class="form-group">
+      {{ form.first_name.label_tag }} {{ form.first_name }}
+    </div>
+    <div class="form-group">
+      {{ form.last_name.label_tag }} {{ form.last_name }}
+    </div>
+    <p>¿Deseas cerrar sesión? <a href="{% url 'logout' %}">Cerrar sesión</a></p>
+    <p>¿Necesitas agregar un avatar? <a href="{% url 'agregar_avatar' %}">Agrega tu avatar</a></p>
+    <p>¿Quieres cambiar tu contraseña? <a href="{% url 'cambiar_contrasena' %}">Cambiar contraseña</a></p>
+    <button type="submit">Guardar Cambios</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "AppCurso/base.html" %}
+
+{% block content %}
+  <h2>Cambio de contraseña</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Cambiar contraseña</button>
+  </form>
+</div>
+{% endblock %}

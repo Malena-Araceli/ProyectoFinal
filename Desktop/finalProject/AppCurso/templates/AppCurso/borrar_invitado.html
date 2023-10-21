@@ -1,0 +1,13 @@
+{% extends "AppCurso/base.html" %}
+
+{% block content %}
+    <div class="container px-5">
+        <h1 class="display-4">¿Seguro que deseas borrarlo?</h1>
+        <p>Invitado: {{ invitado.nombre }} {{ invitado.apellido }}</p>
+        <p>Email: {{ invitado.email }}</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Sí, borrar este invitado</button>
+        </form>
+    </div>
+{% endblock %}

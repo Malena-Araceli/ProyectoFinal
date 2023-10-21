@@ -1,0 +1,12 @@
+{% extends "AppCurso/base.html" %}
+
+{% block content %}
+    <div class="container px-5">
+        <h1 class="display-4">Editar Regalo</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ formulario.as_p }}
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </div>
+{% endblock %}

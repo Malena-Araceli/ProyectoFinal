@@ -1,0 +1,15 @@
+{% extends "AppCurso/base.html" %}
+
+{% block content %}
+    <section id="borrar-pareja">
+        <div class="container px-5">
+            <h1 class="display-4">¿Seguro que deseas borrar esta pareja?</h1>
+            <p>Pareja: {{ pareja.nombre_novio }} y {{ pareja.nombre_novia }}</p>
+            <p>Fecha de casamiento: {{ pareja.fecha_casamiento|date:"d-m-Y" }}</p>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit">Sí, borrar esta pareja</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

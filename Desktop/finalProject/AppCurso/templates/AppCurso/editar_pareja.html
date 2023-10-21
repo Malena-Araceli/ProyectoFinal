@@ -1,0 +1,14 @@
+{% extends "AppCurso/base.html" %}
+
+{% block content %}
+    <section id="editar-pareja">
+        <div class="container px-5">
+            <h1 class="display-4">Editar Pareja</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ formulario.as_p }}
+                <button type="submit">Guardar cambios</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "AppCurso/base.html" %}
+
+{% block content %}
+    <div class="container px-5">
+        <h1 class="display-4">Comentarios</h1>
+        <ul>
+            {% for comentario in comentarios %}
+                <li>
+                    <strong>{{ comentario.autor }}</strong> - {{ comentario.mensaje }}
+                    <a href="{% url 'editar_comentario' comentario.id %}">Editar</a> |
+                    <a href="{% url 'borrar_comentario' comentario.id %}">Borrar</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

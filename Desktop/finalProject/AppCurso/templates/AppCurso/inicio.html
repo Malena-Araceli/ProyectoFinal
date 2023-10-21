@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Tu Boda</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+    <link href="{% static 'AppCurso/css/styles.css' %}" rel="stylesheet" />
+</head>
+<body id="page-top">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container px-5">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'inicio' %}">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'lista_parejas' %}">Parejas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'lista_regalos' %}">Regalos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'agregar_comentario' %}">Comentarios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'agregar_invitado' %}">Invitados</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'acercaDeMi' %}">Acerca de mi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'agregar_avatar' %}">Subir Avatar</a></li>
+
+                    <ul class="navbar-nav ms-auto">
+                        {% if request.user.is_authenticated %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'editar_perfil' %}">Editar Perfil</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a>
+                      </li>
+                      <li class="nav-item">
+                        <span class="nav-link">
+                          ¡Hola, {{ request.user.username }}!
+                          <img src="{{ user_avatar.imagen.url }}" alt="" style="height: 40px; width: 40px;">
+                        </span>
+                      </li>
+                    {% else %}
+                      <li class="btn btn-primary">
+                        <a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'registro' %}">Regístrate</a>
+                      </li>
+                    {% endif %}
+                  </ul>
+
+
+                    
+                    
+                    
+
+
+                   
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="masthead text-center text-white">
+        <div class="masthead-content">
+            <div class="container px-5">
+                <h1 class="masthead-heading mb-0">Invitacion a tu casamiento </h1>
+                <h2 class="masthead-subheading mb-0">¡Cumpli tu sueño!</h2>
+                <a class="btn btn-primary btn-xl rounded-pill mt-5" href="{% url 'agregar_pareja' %}">Registrate como pareja!</a>
+
+            </div>
+        </div>
+       
+    </header>
+
+    {% block section1 %} {% endblock %}
+    {% block section2 %} {% endblock %}
+    {% block section3 %} {% endblock %}
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'appCurso/js/scripts.js' %}"></script>
+</body>
+</html>
+
+        <!-- Content section 2-->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="p-5"><img class="img-fluid rounded-circle"  src="{% static 'appCurso/assets/img/02.jpg' %}" alt="..." /></div>
+                    </div> 
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <h2 class="display-4">¡Celebremos juntos!</h2>
+                            <p>Estamos emocionados de compartir este día especial contigo. Tu presencia hace que esta ocasión sea aún más significativa. Esperamos que disfrutes de la celebración y los momentos especiales que hemos planeado. ¡Gracias por ser parte de nuestra historia!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Content section 3-->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src="{% static 'appCurso/assets/img/03.jpg' %}" alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">¡Descubre lo que te espera!</h2>
+                            <p>Queremos compartir algunos de los momentos especiales que tenemos preparados para ti. Desde la ceremonia hasta la fiesta, estamos emocionados de que seas parte de esta celebración única. ¡Comparte tus comentarios y  agrega tus regalos!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-black">
+            <div class="container px-5"><p class="m-0 text-center text-white small">Copyright &copy; Your Website 2023</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'appCurso/js/scripts.js' %}"></script>
+    </body>
+</html>
